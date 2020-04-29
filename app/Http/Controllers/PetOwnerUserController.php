@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\POsigning;
-use App\POprofile;
+use App\PetOwnerUser;
 use Illuminate\Http\Request;
-use \Illuminate\Http\Response;
 
-class POsigningController extends Controller
+class PetOwnerUserController extends Controller
 {
     /**
      * Signup function for pet owners.
@@ -18,18 +16,18 @@ class POsigningController extends Controller
     public function signup(Request $request)
     {
 
-        if($request->input('email') != null && $request->input('password') !=null && $request->input('first_name') !=null && $request->input('last_name') !=null && $request->input('mobile_no') !=null)
+        if($request->input('email') != null && $request->input('mobile_number') !=null && $request->input('password') !=null && $request->input('first_name') !=null && $request->input('last_name') !=null )
         {
-            $poSigningGet = POsigning::all();
+            $petOwnerUser = PetOwnerUser::all();
 
-            $userCount = count($poSigningGet);
+            $userCount = count($petOwnerUser);
     
             $user_exist = false;
     
-            foreach($poSigningGet as $data)
+            foreach($petOwnerUser as $data)
             {
     
-                if($data->email == $request->input('email') || $data->mobile_no == $request->input('mobile_no'))
+                if($data->email == $request->input('email') || $data->mobile_number == $request->input('mobile_number'))
                 {
                     $user_exist = true;
                     break;
@@ -45,8 +43,8 @@ class POsigningController extends Controller
             }
             else
             {
-                $poSigning = new POsigning();
-                $poProfile = new POprofile();
+                $petOwnerUser = new PetOwnerUser();
+               
     
                 $user_id_generated = null;
     
@@ -56,40 +54,28 @@ class POsigningController extends Controller
                 }
                 else
                 {
-                    $last_row = POsigning::latest()->first();
+                    $last_row = PetOwnerUser::latest()->first();
                     $user_id_generated = $last_row->user_id+1;
                 }
                 
-                $poSigning->user_id = $user_id_generated;
-                $poSigning->email = $request->input('email');
-                $poSigning->mobile_no = $request->input('mobile_no');
-                $poSigning->password = $request->input('password');
-                
-                $poProfile->user_id = $user_id_generated;
-                $poProfile->first_name = $request->input('first_name');
-                $poProfile->last_name = $request->input('last_name');
-                $poProfile->mobile_no = $request->input('mobile_no');
-                $poProfile->latitude = $request->input('latitude');
-                $poProfile->longitude = $request->input('longitude');
-                $poProfile->email = $request->input('email');
-                $poProfile->address = $request->input('address');
+                $petOwnerUser->user_id = $user_id_generated;
+                $petOwnerUser->email = $request->input('email');
+                $petOwnerUser->mobile_number = $request->input('mobile_number');
+                $petOwnerUser->password = $request->input('password');
+                $petOwnerUser->first_name = $request->input('first_name');
+                $petOwnerUser->last_name = $request->input('last_name');
+                $petOwnerUser->latitude = $request->input('latitude');
+                $petOwnerUser->longitude = $request->input('longitude');
+                $petOwnerUser->address = $request->input('address');
                    
-                if($poSigning->save())
+                if($petOwnerUser->save())
                 {
-                    if($poProfile->save())
-                    {
-                        return response()->json([
-                            "success" => true,
-                            "message" => "Account created"
-                        ],201);
-                    }
-                    else
-                    {
-                        return response()->json([
-                            "success" => false,
-                            "message" => "Account created but something went wrong while creating a profile",
-                        ],500);
-                    }  
+                        
+                    return response()->json([
+                        "success" => true,
+                        "message" => "Account created"
+                    ],201);  
+                    
                 }
                 else
                 {
@@ -104,7 +90,7 @@ class POsigningController extends Controller
         {
             return response()->json([
                 "success" => false,
-                "message" => "Incomplete data in reuqest body"
+                "message" => "Incomplete data in request body"
             ],400);
         }    
     }
@@ -117,16 +103,18 @@ class POsigningController extends Controller
      */
     public function signin(Request $request)
     {
-        $poSigningGet = POsigning::all();
+        $petOwnerUser = PetOwnerUser::all();
 
         $user_exist = false;
         $password_wrong = false;
+        $signed_user_data = null;
 
-        foreach($poSigningGet as $data)
+        foreach($petOwnerUser as $data)
         {
-            if($data->email == $request->input('email') || $data->mobile_no == $request->input('mobile_no'))
+            if($data->email == $request->input('email') || $data->mobile_number == $request->input('mobile_number'))
             {
                 $user_exist = true;
+                $signed_user_data = $data;
                 if($data->password != $request->input('password'))
                 {
                     $password_wrong = true;
@@ -140,7 +128,8 @@ class POsigningController extends Controller
             //$access_token_generated = bin2hex(random_bytes(64));
 
             return response()->json([
-                "success" => true,               
+                "success" => true,
+                "user_id" => $signed_user_data->user_id               
             ],200);
         }
         else if($user_exist == true &&  $password_wrong == true)

@@ -18,6 +18,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//Pet Owners (PO)
-Route::post('/posignup','POsigningController@signup');
-Route::get('/posignin','POsigningController@signin');
+//Pet Service
+Route::post('/petservicesignup','PetServiceUserController@signup');
+Route::get('/petservicesignin','PetServiceUserController@signin');
+
+
+//Pet Owner
+Route::post('/petownersignup','PetOwnerUserController@signup');
+Route::get('/petownersignin','PetOwnerUserController@signin');

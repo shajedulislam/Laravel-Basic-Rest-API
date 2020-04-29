@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Petsheba</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -96,7 +96,7 @@
                 </div>
 
                 <div class="links">
-                    <a>COMMING SOON</a>
+                    <a>COMING SOON</a>
                     
                 </div>
                 <div class="links">
