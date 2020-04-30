@@ -1,0 +1,135 @@
+{
+    "variables": [],
+    "info": {
+        "name": "Laravel API",
+        "_postman_id": "437092ed-599d-4b2c-80c8-1176e13e6cc7",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Pet Owner User",
+            "description": "\nAPIs for pet owner user",
+            "item": [
+                {
+                    "name": "Signup",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "test.petsheba.com",
+                            "path": "api\/petownersignup",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"first_name\": \"Shajedul\",\n    \"last_name\": \"Islam\",\n    \"email\": \"info@shajedulislam.dev\",\n    \"mobile_number\": \"01628734916\",\n    \"password\": \"12345678\",\n    \"latitude\": \"33.147984\",\n    \"longitude\": \"73.753670\",\n    \"address\": \"15 A, Road-8, Banani, Dhaka, Bangladesh\"\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Signin",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "test.petsheba.com",
+                            "path": "api\/petownersignin",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"email\": \"info@shajedulislam.dev\",\n    \"mobile_number\": \"01628734916\",\n    \"password\": \"12345678\"\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Pet Service User",
+            "description": "\nAPIs for pet service user",
+            "item": [
+                {
+                    "name": "Signup",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "test.petsheba.com",
+                            "path": "api\/petservicesignup",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"service_type\": \"vet\",\n    \"first_name\": \"Shajedul\",\n    \"last_name\": \"Islam\",\n    \"email\": \"info@shajedulislam.dev\",\n    \"mobile_number\": \"01628734916\",\n    \"password\": \"12345678\",\n    \"registration_number\": \"123456\",\n    \"nid_number\": \"199412345678\",\n    \"latitude\": \"33.147984\",\n    \"longitude\": \"73.753670\",\n    \"address\": \"15 A, Road-8, Banani, Dhaka, Bangladesh\"\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Signin",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "test.petsheba.com",
+                            "path": "api\/petservicesignin",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"email\": \"info@shajedulislam.dev\",\n    \"mobile_number\": \"01628734916\",\n    \"password\": \"12345678\"\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                }
+            ]
+        }
+    ]
+}

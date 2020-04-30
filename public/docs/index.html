@@ -1,0 +1,500 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>API Reference</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/all.js"></script>
+
+
+          <script>
+        $(function() {
+            setupLanguages(["javascript","bash"]);
+        });
+      </script>
+      </head>
+
+  <body class="">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" />
+      </span>
+    </a>
+    <div class="tocify-wrapper">
+        <img src="images/logo.png" />
+                    <div class="lang-selector">
+                                  <a href="#" data-language-name="javascript">javascript</a>
+                                  <a href="#" data-language-name="bash">bash</a>
+                            </div>
+                            <div class="search">
+              <input type="text" class="search" id="input-search" placeholder="Search">
+            </div>
+            <ul class="search-results"></ul>
+              <div id="toc">
+      </div>
+                    <ul class="toc-footer">
+                                  <li><a href='http://github.com/mpociot/documentarian'>Documentation Powered by Documentarian</a></li>
+                            </ul>
+            </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+          <!-- START_INFO -->
+<h1>Info</h1>
+<p>Welcome to the generated API reference.</p>
+<!-- END_INFO -->
+<h1>Pet Owner User</h1>
+<p>APIs for pet owner user signup and signin</p>
+<!-- START_a07aeb2f5805408ae0ef50ce80039688 -->
+<h2>Signup</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-javascript">const url = new URL(
+    "http://test.petsheba.com/api/petownersignup"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "first_name": "Shajedul",
+    "last_name": "Islam",
+    "email": "info@shajedulislam.dev",
+    "mobile_number": "01628734916",
+    "password": "12345678",
+    "latitude": "33.147984",
+    "longitude": "73.753670",
+    "address": "15 A, Road-8, Banani, Dhaka, Bangladesh"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<pre><code class="language-bash">curl -X POST \
+    "http://test.petsheba.com/api/petownersignup" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"first_name":"Shajedul","last_name":"Islam","email":"info@shajedulislam.dev","mobile_number":"01628734916","password":"12345678","latitude":"33.147984","longitude":"73.753670","address":"15 A, Road-8, Banani, Dhaka, Bangladesh"}'
+</code></pre>
+<blockquote>
+<p>Example response (201):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": true,
+    "message": "Account created"
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": false,
+    "message": "User exist"
+}</code></pre>
+<blockquote>
+<p>Example response (500):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": false,
+    "message": "Something went wrong"
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": false,
+    "message": "Incomplete data in request body"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/petownersignup</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>first_name</code></td>
+<td>string</td>
+<td>required</td>
+</tr>
+<tr>
+<td><code>last_name</code></td>
+<td>string</td>
+<td>required</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td>string</td>
+<td>required</td>
+</tr>
+<tr>
+<td><code>mobile_number</code></td>
+<td>string</td>
+<td>required</td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td>string</td>
+<td>required</td>
+</tr>
+<tr>
+<td><code>latitude</code></td>
+<td>string</td>
+<td>optional</td>
+</tr>
+<tr>
+<td><code>longitude</code></td>
+<td>string</td>
+<td>optional</td>
+</tr>
+<tr>
+<td><code>address</code></td>
+<td>string</td>
+<td>optional</td>
+</tr>
+</tbody>
+</table>
+<!-- END_a07aeb2f5805408ae0ef50ce80039688 -->
+<!-- START_f9610537fa5c74a162ee3f148a882d0d -->
+<h2>Signin</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-javascript">const url = new URL(
+    "http://test.petsheba.com/api/petownersignin"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "email": "info@shajedulislam.dev",
+    "mobile_number": "01628734916",
+    "password": "12345678"
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://test.petsheba.com/api/petownersignin" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"email":"info@shajedulislam.dev","mobile_number":"01628734916","password":"12345678"}'
+</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": true,
+    "user_id": "1234"
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": false,
+    "message": "Wrong password"
+}</code></pre>
+<blockquote>
+<p>Example response (404):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": false,
+    "message": "User not found"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/petownersignin</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>email</code></td>
+<td>string</td>
+<td>optional</td>
+<td>it is optional only if you use mobile_number</td>
+</tr>
+<tr>
+<td><code>mobile_number</code></td>
+<td>string</td>
+<td>optional</td>
+<td>it is optional only if you use email.</td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td>string</td>
+<td>required</td>
+</tr>
+</tbody>
+</table>
+<!-- END_f9610537fa5c74a162ee3f148a882d0d -->
+<h1>Pet Service User</h1>
+<p>APIs for pet service user signup and signin</p>
+<!-- START_91a71726dd2fc6515630297ad3df8f12 -->
+<h2>Signup</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-javascript">const url = new URL(
+    "http://test.petsheba.com/api/petservicesignup"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "service_type": "vet",
+    "first_name": "Shajedul",
+    "last_name": "Islam",
+    "email": "info@shajedulislam.dev",
+    "mobile_number": "01628734916",
+    "password": "12345678",
+    "registration_number": "123456",
+    "nid_number": "199412345678",
+    "latitude": "33.147984",
+    "longitude": "73.753670",
+    "address": "15 A, Road-8, Banani, Dhaka, Bangladesh"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<pre><code class="language-bash">curl -X POST \
+    "http://test.petsheba.com/api/petservicesignup" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"service_type":"vet","first_name":"Shajedul","last_name":"Islam","email":"info@shajedulislam.dev","mobile_number":"01628734916","password":"12345678","registration_number":"123456","nid_number":"199412345678","latitude":"33.147984","longitude":"73.753670","address":"15 A, Road-8, Banani, Dhaka, Bangladesh"}'
+</code></pre>
+<blockquote>
+<p>Example response (201):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": true,
+    "message": "Account created"
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": false,
+    "message": "User exist"
+}</code></pre>
+<blockquote>
+<p>Example response (500):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": false,
+    "message": "Something went wrong"
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": false,
+    "message": "Incomplete data in request body"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/petservicesignup</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>service_type</code></td>
+<td>string</td>
+<td>required</td>
+</tr>
+<tr>
+<td><code>first_name</code></td>
+<td>string</td>
+<td>required</td>
+</tr>
+<tr>
+<td><code>last_name</code></td>
+<td>string</td>
+<td>required</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td>string</td>
+<td>required</td>
+</tr>
+<tr>
+<td><code>mobile_number</code></td>
+<td>string</td>
+<td>required</td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td>string</td>
+<td>required</td>
+</tr>
+<tr>
+<td><code>registration_number</code></td>
+<td>string</td>
+<td>required</td>
+</tr>
+<tr>
+<td><code>nid_number</code></td>
+<td>string</td>
+<td>required</td>
+</tr>
+<tr>
+<td><code>latitude</code></td>
+<td>string</td>
+<td>optional</td>
+</tr>
+<tr>
+<td><code>longitude</code></td>
+<td>string</td>
+<td>optional</td>
+</tr>
+<tr>
+<td><code>address</code></td>
+<td>string</td>
+<td>optional</td>
+</tr>
+</tbody>
+</table>
+<!-- END_91a71726dd2fc6515630297ad3df8f12 -->
+<!-- START_1593e30b95e4dacd2a3058031342ba3f -->
+<h2>Signin</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-javascript">const url = new URL(
+    "http://test.petsheba.com/api/petservicesignin"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "email": "info@shajedulislam.dev",
+    "mobile_number": "01628734916",
+    "password": "12345678"
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://test.petsheba.com/api/petservicesignin" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"email":"info@shajedulislam.dev","mobile_number":"01628734916","password":"12345678"}'
+</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": true,
+    "user_id": "1234",
+    "service_type": "vet"
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": false,
+    "message": "Wrong password"
+}</code></pre>
+<blockquote>
+<p>Example response (404):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": false,
+    "message": "User not found"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/petservicesignin</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>email</code></td>
+<td>string</td>
+<td>optional</td>
+<td>it is optional only if you use mobile_number</td>
+</tr>
+<tr>
+<td><code>mobile_number</code></td>
+<td>string</td>
+<td>optional</td>
+<td>it is optional only if you use email.</td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td>string</td>
+<td>required</td>
+</tr>
+</tbody>
+</table>
+<!-- END_1593e30b95e4dacd2a3058031342ba3f -->
+      </div>
+      <div class="dark-box">
+                        <div class="lang-selector">
+                                    <a href="#" data-language-name="javascript">javascript</a>
+                                    <a href="#" data-language-name="bash">bash</a>
+                              </div>
+                </div>
+    </div>
+  </body>
+</html>

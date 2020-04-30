@@ -5,13 +5,55 @@ namespace App\Http\Controllers;
 use App\PetServiceUser;
 use Illuminate\Http\Request;
 
+
+/**
+ * @group Pet Service User
+ * 
+ * APIs for pet service user signup and signin
+ */
 class PetServiceUserController extends Controller
 {
-   /**
-     * Signup function for pet owners.
+    /**
+     * Signup
+     * 
+     * 
+     * @bodyParam service_type string required Example: vet
+     * @bodyParam first_name string required Example: Shajedul
+     * @bodyParam last_name string required Example: Islam
+     * @bodyParam email string required Example: info@shajedulislam.dev
+     * @bodyParam mobile_number string required Example: 01628734916
+     * @bodyParam password string required Example: 12345678
+     * @bodyParam registration_number string required Example: 123456
+     * @bodyParam nid_number string required Example: 199412345678
+     * @bodyParam latitude string Example: 33.147984
+     * @bodyParam longitude string Example: 73.753670
+     * @bodyParam address string Example: 15 A, Road-8, Banani, Dhaka, Bangladesh
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     *
+     * @response 201
+     * {
+     *      "success": true,
+     *      "message": "Account created"
+     * }
+     * 
+     * @response 400
+     * {
+     *      "success": false,
+     *      "message": "User exist"
+     * }
+     * 
+     * @response 500
+     * {
+     *      "success": false,
+     *      "message": "Something went wrong"
+     * }
+     * 
+     * @response 400
+     * {
+     *      "success": false,
+     *      "message": "Incomplete data in request body"
+     * }
+     * 
      */
     public function signup(Request $request)
     {
@@ -99,10 +141,33 @@ class PetServiceUserController extends Controller
     }
 
     /**
-     * Signin for pet owners.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * Signin
+     * 
+     * 
+     * @bodyParam email string it is optional only if you use mobile_number Example: info@shajedulislam.dev
+     * @bodyParam mobile_number string it is optional only if you use email. Example: 01628734916
+     * @bodyParam password string required Example: 12345678
+     * 
+     * 
+     * @response 200
+     * {
+     *      "success": true,
+     *      "user_id": "1234",
+     *      "service_type" : "vet"
+     * }
+     * 
+     * @response 400
+     * {
+     *      "success": false,
+     *      "message": "Wrong password"
+     * }
+     * 
+     * @response 404
+     * {
+     *      "success": false,
+     *      "message": "User not found"
+     * }
+     * 
      */
     public function signin(Request $request)
     {

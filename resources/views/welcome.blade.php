@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,7 +30,7 @@
                 justify-content: center;
             }
 
-            .position-ref {
+                .position-ref {
                 position: relative;
             }
 
@@ -55,7 +55,7 @@
             .links > a {
                 color: #636b6f;
                 padding: 0 25px;
-                font-size: 13px;
+                font-size: 14px;
                 font-weight: 600;
                 letter-spacing: .1rem;
                 text-decoration: none;
@@ -69,24 +69,32 @@
             .m-b-sm {
                 margin-bottom: 5px;
             }
+            
+           
+            @media only screen and (max-width: 768px) {
+               .title {
+                    font-size: 38px;
+                }
+    
+                .title2 {
+                    font-size: 16px;
+                }
+                
+                .links > a {
+                color: #636b6f;
+                padding: 0 25px;
+                font-size: 10px;
+                font-weight: 600;
+                letter-spacing: .1rem;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+              
+            }
         </style>
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
             <div class="content">
                 <div class="title m-b-sm">
                     PETSHEBA
