@@ -55,7 +55,7 @@
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-javascript">const url = new URL(
-    "http://test.petsheba.com/api/petownersignup"
+    "https://test.petsheba.com/api/petownersignup"
 );
 
 let headers = {
@@ -82,20 +82,20 @@ fetch(url, {
     .then(response =&gt; response.json())
     .then(json =&gt; console.log(json));</code></pre>
 <pre><code class="language-bash">curl -X POST \
-    "http://test.petsheba.com/api/petownersignup" \
+    "https://test.petsheba.com/api/petownersignup" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -d '{"first_name":"Shajedul","last_name":"Islam","email":"info@shajedulislam.dev","mobile_number":"01628734916","password":"12345678","latitude":"33.147984","longitude":"73.753670","address":"15 A, Road-8, Banani, Dhaka, Bangladesh"}'
 </code></pre>
 <blockquote>
-<p>Example response (201):</p>
+<p>Example response (200):</p>
 </blockquote>
 <pre><code class="language-json">{
     "success": true,
     "message": "Account created"
 }</code></pre>
 <blockquote>
-<p>Example response (400):</p>
+<p>Example response (200):</p>
 </blockquote>
 <pre><code class="language-json">{
     "success": false,
@@ -171,13 +171,13 @@ fetch(url, {
 </tbody>
 </table>
 <!-- END_a07aeb2f5805408ae0ef50ce80039688 -->
-<!-- START_f9610537fa5c74a162ee3f148a882d0d -->
+<!-- START_22c47495d5d24e328956f32825f512ea -->
 <h2>Signin</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-javascript">const url = new URL(
-    "http://test.petsheba.com/api/petownersignin"
+    "https://test.petsheba.com/api/petownersignin"
 );
 
 let headers = {
@@ -192,14 +192,14 @@ let body = {
 }
 
 fetch(url, {
-    method: "GET",
+    method: "POST",
     headers: headers,
     body: body
 })
     .then(response =&gt; response.json())
     .then(json =&gt; console.log(json));</code></pre>
-<pre><code class="language-bash">curl -X GET \
-    -G "http://test.petsheba.com/api/petownersignin" \
+<pre><code class="language-bash">curl -X POST \
+    "https://test.petsheba.com/api/petownersignin" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -d '{"email":"info@shajedulislam.dev","mobile_number":"01628734916","password":"12345678"}'
@@ -212,7 +212,7 @@ fetch(url, {
     "user_id": "1234"
 }</code></pre>
 <blockquote>
-<p>Example response (400):</p>
+<p>Example response (401):</p>
 </blockquote>
 <pre><code class="language-json">{
     "success": false,
@@ -226,7 +226,7 @@ fetch(url, {
     "message": "User not found"
 }</code></pre>
 <h3>HTTP Request</h3>
-<p><code>GET api/petownersignin</code></p>
+<p><code>POST api/petownersignin</code></p>
 <h4>Body Parameters</h4>
 <table>
 <thead>
@@ -257,7 +257,7 @@ fetch(url, {
 </tr>
 </tbody>
 </table>
-<!-- END_f9610537fa5c74a162ee3f148a882d0d -->
+<!-- END_22c47495d5d24e328956f32825f512ea -->
 <h1>Pet Service User</h1>
 <p>APIs for pet service user signup and signin</p>
 <!-- START_91a71726dd2fc6515630297ad3df8f12 -->
@@ -266,7 +266,7 @@ fetch(url, {
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-javascript">const url = new URL(
-    "http://test.petsheba.com/api/petservicesignup"
+    "https://test.petsheba.com/api/petservicesignup"
 );
 
 let headers = {
@@ -296,20 +296,20 @@ fetch(url, {
     .then(response =&gt; response.json())
     .then(json =&gt; console.log(json));</code></pre>
 <pre><code class="language-bash">curl -X POST \
-    "http://test.petsheba.com/api/petservicesignup" \
+    "https://test.petsheba.com/api/petservicesignup" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -d '{"service_type":"vet","first_name":"Shajedul","last_name":"Islam","email":"info@shajedulislam.dev","mobile_number":"01628734916","password":"12345678","registration_number":"123456","nid_number":"199412345678","latitude":"33.147984","longitude":"73.753670","address":"15 A, Road-8, Banani, Dhaka, Bangladesh"}'
 </code></pre>
 <blockquote>
-<p>Example response (201):</p>
+<p>Example response (200):</p>
 </blockquote>
 <pre><code class="language-json">{
     "success": true,
     "message": "Account created"
 }</code></pre>
 <blockquote>
-<p>Example response (400):</p>
+<p>Example response (200):</p>
 </blockquote>
 <pre><code class="language-json">{
     "success": false,
@@ -400,13 +400,13 @@ fetch(url, {
 </tbody>
 </table>
 <!-- END_91a71726dd2fc6515630297ad3df8f12 -->
-<!-- START_1593e30b95e4dacd2a3058031342ba3f -->
+<!-- START_910731cff1ffe0036ded5ce0d443f5c1 -->
 <h2>Signin</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-javascript">const url = new URL(
-    "http://test.petsheba.com/api/petservicesignin"
+    "https://test.petsheba.com/api/petservicesignin"
 );
 
 let headers = {
@@ -421,14 +421,14 @@ let body = {
 }
 
 fetch(url, {
-    method: "GET",
+    method: "POST",
     headers: headers,
     body: body
 })
     .then(response =&gt; response.json())
     .then(json =&gt; console.log(json));</code></pre>
-<pre><code class="language-bash">curl -X GET \
-    -G "http://test.petsheba.com/api/petservicesignin" \
+<pre><code class="language-bash">curl -X POST \
+    "https://test.petsheba.com/api/petservicesignin" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -d '{"email":"info@shajedulislam.dev","mobile_number":"01628734916","password":"12345678"}'
@@ -442,21 +442,21 @@ fetch(url, {
     "service_type": "vet"
 }</code></pre>
 <blockquote>
-<p>Example response (400):</p>
+<p>Example response (401):</p>
 </blockquote>
 <pre><code class="language-json">{
     "success": false,
     "message": "Wrong password"
 }</code></pre>
 <blockquote>
-<p>Example response (404):</p>
+<p>Example response (200):</p>
 </blockquote>
 <pre><code class="language-json">{
     "success": false,
     "message": "User not found"
 }</code></pre>
 <h3>HTTP Request</h3>
-<p><code>GET api/petservicesignin</code></p>
+<p><code>POST api/petservicesignin</code></p>
 <h4>Body Parameters</h4>
 <table>
 <thead>
@@ -487,7 +487,7 @@ fetch(url, {
 </tr>
 </tbody>
 </table>
-<!-- END_1593e30b95e4dacd2a3058031342ba3f -->
+<!-- END_910731cff1ffe0036ded5ce0d443f5c1 -->
       </div>
       <div class="dark-box">
                         <div class="lang-selector">

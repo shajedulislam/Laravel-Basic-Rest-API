@@ -30,7 +30,7 @@ APIs for pet owner user signup and signin
 
 ```javascript
 const url = new URL(
-    "http://test.petsheba.com/api/petownersignup"
+    "https://test.petsheba.com/api/petownersignup"
 );
 
 let headers = {
@@ -60,7 +60,7 @@ fetch(url, {
 
 ```bash
 curl -X POST \
-    "http://test.petsheba.com/api/petownersignup" \
+    "https://test.petsheba.com/api/petownersignup" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -d '{"first_name":"Shajedul","last_name":"Islam","email":"info@shajedulislam.dev","mobile_number":"01628734916","password":"12345678","latitude":"33.147984","longitude":"73.753670","address":"15 A, Road-8, Banani, Dhaka, Bangladesh"}'
@@ -68,7 +68,7 @@ curl -X POST \
 ```
 
 
-> Example response (201):
+> Example response (200):
 
 ```json
 {
@@ -76,7 +76,7 @@ curl -X POST \
     "message": "Account created"
 }
 ```
-> Example response (400):
+> Example response (200):
 
 ```json
 {
@@ -118,14 +118,14 @@ Parameter | Type | Status | Description
     
 <!-- END_a07aeb2f5805408ae0ef50ce80039688 -->
 
-<!-- START_f9610537fa5c74a162ee3f148a882d0d -->
+<!-- START_22c47495d5d24e328956f32825f512ea -->
 ## Signin
 
 > Example request:
 
 ```javascript
 const url = new URL(
-    "http://test.petsheba.com/api/petownersignin"
+    "https://test.petsheba.com/api/petownersignin"
 );
 
 let headers = {
@@ -140,7 +140,7 @@ let body = {
 }
 
 fetch(url, {
-    method: "GET",
+    method: "POST",
     headers: headers,
     body: body
 })
@@ -149,8 +149,8 @@ fetch(url, {
 ```
 
 ```bash
-curl -X GET \
-    -G "http://test.petsheba.com/api/petownersignin" \
+curl -X POST \
+    "https://test.petsheba.com/api/petownersignin" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -d '{"email":"info@shajedulislam.dev","mobile_number":"01628734916","password":"12345678"}'
@@ -166,7 +166,7 @@ curl -X GET \
     "user_id": "1234"
 }
 ```
-> Example response (400):
+> Example response (401):
 
 ```json
 {
@@ -184,7 +184,7 @@ curl -X GET \
 ```
 
 ### HTTP Request
-`GET api/petownersignin`
+`POST api/petownersignin`
 
 #### Body Parameters
 Parameter | Type | Status | Description
@@ -193,7 +193,7 @@ Parameter | Type | Status | Description
         `mobile_number` | string |  optional  | it is optional only if you use email.
         `password` | string |  required  | 
     
-<!-- END_f9610537fa5c74a162ee3f148a882d0d -->
+<!-- END_22c47495d5d24e328956f32825f512ea -->
 
 #Pet Service User
 
@@ -206,7 +206,7 @@ APIs for pet service user signup and signin
 
 ```javascript
 const url = new URL(
-    "http://test.petsheba.com/api/petservicesignup"
+    "https://test.petsheba.com/api/petservicesignup"
 );
 
 let headers = {
@@ -239,7 +239,7 @@ fetch(url, {
 
 ```bash
 curl -X POST \
-    "http://test.petsheba.com/api/petservicesignup" \
+    "https://test.petsheba.com/api/petservicesignup" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -d '{"service_type":"vet","first_name":"Shajedul","last_name":"Islam","email":"info@shajedulislam.dev","mobile_number":"01628734916","password":"12345678","registration_number":"123456","nid_number":"199412345678","latitude":"33.147984","longitude":"73.753670","address":"15 A, Road-8, Banani, Dhaka, Bangladesh"}'
@@ -247,7 +247,7 @@ curl -X POST \
 ```
 
 
-> Example response (201):
+> Example response (200):
 
 ```json
 {
@@ -255,7 +255,7 @@ curl -X POST \
     "message": "Account created"
 }
 ```
-> Example response (400):
+> Example response (200):
 
 ```json
 {
@@ -300,14 +300,14 @@ Parameter | Type | Status | Description
     
 <!-- END_91a71726dd2fc6515630297ad3df8f12 -->
 
-<!-- START_1593e30b95e4dacd2a3058031342ba3f -->
+<!-- START_910731cff1ffe0036ded5ce0d443f5c1 -->
 ## Signin
 
 > Example request:
 
 ```javascript
 const url = new URL(
-    "http://test.petsheba.com/api/petservicesignin"
+    "https://test.petsheba.com/api/petservicesignin"
 );
 
 let headers = {
@@ -322,7 +322,7 @@ let body = {
 }
 
 fetch(url, {
-    method: "GET",
+    method: "POST",
     headers: headers,
     body: body
 })
@@ -331,8 +331,8 @@ fetch(url, {
 ```
 
 ```bash
-curl -X GET \
-    -G "http://test.petsheba.com/api/petservicesignin" \
+curl -X POST \
+    "https://test.petsheba.com/api/petservicesignin" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -d '{"email":"info@shajedulislam.dev","mobile_number":"01628734916","password":"12345678"}'
@@ -349,7 +349,7 @@ curl -X GET \
     "service_type": "vet"
 }
 ```
-> Example response (400):
+> Example response (401):
 
 ```json
 {
@@ -357,7 +357,7 @@ curl -X GET \
     "message": "Wrong password"
 }
 ```
-> Example response (404):
+> Example response (200):
 
 ```json
 {
@@ -367,7 +367,7 @@ curl -X GET \
 ```
 
 ### HTTP Request
-`GET api/petservicesignin`
+`POST api/petservicesignin`
 
 #### Body Parameters
 Parameter | Type | Status | Description
@@ -376,6 +376,6 @@ Parameter | Type | Status | Description
         `mobile_number` | string |  optional  | it is optional only if you use email.
         `password` | string |  required  | 
     
-<!-- END_1593e30b95e4dacd2a3058031342ba3f -->
+<!-- END_910731cff1ffe0036ded5ce0d443f5c1 -->
 
 

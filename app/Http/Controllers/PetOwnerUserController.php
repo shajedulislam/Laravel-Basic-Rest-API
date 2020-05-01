@@ -27,13 +27,13 @@ class PetOwnerUserController extends Controller
      * @bodyParam address string Example: 15 A, Road-8, Banani, Dhaka, Bangladesh
      *
      *
-     * @response 201
+     * @response 200
      * {
      *      "success": true,
      *      "message": "Account created"
      * }
      * 
-     * @response 400
+     * @response 200
      * {
      *      "success": false,
      *      "message": "User exist"
@@ -78,7 +78,7 @@ class PetOwnerUserController extends Controller
                 return response()->json([
                     "success" => false,
                     "message" => "User exist"
-                ],400);
+                ],200);
             }
             else
             {
@@ -113,7 +113,7 @@ class PetOwnerUserController extends Controller
                     return response()->json([
                         "success" => true,
                         "message" => "Account created"
-                    ],201);  
+                    ],200);  
                     
                 }
                 else
@@ -149,7 +149,7 @@ class PetOwnerUserController extends Controller
      *      "user_id": "1234"
      * }
      * 
-     * @response 400
+     * @response 401
      * {
      *      "success": false,
      *      "message": "Wrong password"
@@ -198,7 +198,7 @@ class PetOwnerUserController extends Controller
             return response()->json([
                 "success" => false,
                 "message" => "Wrong password"
-            ],400);
+            ],401);
         }
         else
         {
