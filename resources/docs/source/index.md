@@ -19,12 +19,11 @@ Welcome to the generated API reference.
 
 <!-- END_INFO -->
 
-#Pet Owner User
+#PET OWNER
 
 
-APIs for pet owner user signup and signin
 <!-- START_a07aeb2f5805408ae0ef50ce80039688 -->
-## Signup
+## SIGN UP
 
 > Example request:
 
@@ -119,7 +118,7 @@ Parameter | Type | Status | Description
 <!-- END_a07aeb2f5805408ae0ef50ce80039688 -->
 
 <!-- START_22c47495d5d24e328956f32825f512ea -->
-## Signin
+## SIGN IN
 
 > Example request:
 
@@ -195,12 +194,88 @@ Parameter | Type | Status | Description
     
 <!-- END_22c47495d5d24e328956f32825f512ea -->
 
-#Pet Service User
+<!-- START_4c93baea7f9a515b580f960514830134 -->
+## SET USER LOCATION
+
+> Example request:
+
+```javascript
+const url = new URL(
+    "https://test.petsheba.com/api/petownersetlocation"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "user_id": "Shajedul",
+    "latitude": "23.12345",
+    "longitude": "73.12345"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+```bash
+curl -X POST \
+    "https://test.petsheba.com/api/petownersetlocation" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"user_id":"Shajedul","latitude":"23.12345","longitude":"73.12345"}'
+
+```
 
 
-APIs for pet service user signup and signin
+> Example response (200):
+
+```json
+{
+    "success": true,
+    "message": "Location saved"
+}
+```
+> Example response (500):
+
+```json
+{
+    "success": false,
+    "message": "Something went wrong"
+}
+```
+> Example response (400):
+
+```json
+{
+    "success": false,
+    "message": "Incomplete data in request body"
+}
+```
+
+### HTTP Request
+`POST api/petownersetlocation`
+
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `user_id` | string |  required  | 
+        `latitude` | string |  required  | 
+        `longitude` | string |  required  | 
+    
+<!-- END_4c93baea7f9a515b580f960514830134 -->
+
+#PET SERVICE
+
+
 <!-- START_91a71726dd2fc6515630297ad3df8f12 -->
-## Signup
+## SIGN UP
 
 > Example request:
 
@@ -301,7 +376,7 @@ Parameter | Type | Status | Description
 <!-- END_91a71726dd2fc6515630297ad3df8f12 -->
 
 <!-- START_910731cff1ffe0036ded5ce0d443f5c1 -->
-## Signin
+## SIGN IN
 
 > Example request:
 
@@ -377,5 +452,82 @@ Parameter | Type | Status | Description
         `password` | string |  required  | 
     
 <!-- END_910731cff1ffe0036ded5ce0d443f5c1 -->
+
+<!-- START_08f23099485dd96a1f163cfbe56e8269 -->
+## SET USER LOCATION
+
+> Example request:
+
+```javascript
+const url = new URL(
+    "https://test.petsheba.com/api/petservicesetlocation"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "user_id": "Shajedul",
+    "latitude": "23.12345",
+    "longitude": "73.12345"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+```bash
+curl -X POST \
+    "https://test.petsheba.com/api/petservicesetlocation" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"user_id":"Shajedul","latitude":"23.12345","longitude":"73.12345"}'
+
+```
+
+
+> Example response (200):
+
+```json
+{
+    "success": true,
+    "message": "Location saved"
+}
+```
+> Example response (500):
+
+```json
+{
+    "success": false,
+    "message": "Something went wrong"
+}
+```
+> Example response (400):
+
+```json
+{
+    "success": false,
+    "message": "Incomplete data in request body"
+}
+```
+
+### HTTP Request
+`POST api/petservicesetlocation`
+
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `user_id` | string |  required  | 
+        `latitude` | string |  required  | 
+        `longitude` | string |  required  | 
+    
+<!-- END_08f23099485dd96a1f163cfbe56e8269 -->
 
 

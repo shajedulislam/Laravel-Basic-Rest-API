@@ -47,10 +47,9 @@
 <h1>Info</h1>
 <p>Welcome to the generated API reference.</p>
 <!-- END_INFO -->
-<h1>Pet Owner User</h1>
-<p>APIs for pet owner user signup and signin</p>
+<h1>PET OWNER</h1>
 <!-- START_a07aeb2f5805408ae0ef50ce80039688 -->
-<h2>Signup</h2>
+<h2>SIGN UP</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -172,7 +171,7 @@ fetch(url, {
 </table>
 <!-- END_a07aeb2f5805408ae0ef50ce80039688 -->
 <!-- START_22c47495d5d24e328956f32825f512ea -->
-<h2>Signin</h2>
+<h2>SIGN IN</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -258,10 +257,94 @@ fetch(url, {
 </tbody>
 </table>
 <!-- END_22c47495d5d24e328956f32825f512ea -->
-<h1>Pet Service User</h1>
-<p>APIs for pet service user signup and signin</p>
+<!-- START_4c93baea7f9a515b580f960514830134 -->
+<h2>SET USER LOCATION</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-javascript">const url = new URL(
+    "https://test.petsheba.com/api/petownersetlocation"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "user_id": "Shajedul",
+    "latitude": "23.12345",
+    "longitude": "73.12345"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<pre><code class="language-bash">curl -X POST \
+    "https://test.petsheba.com/api/petownersetlocation" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"user_id":"Shajedul","latitude":"23.12345","longitude":"73.12345"}'
+</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": true,
+    "message": "Location saved"
+}</code></pre>
+<blockquote>
+<p>Example response (500):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": false,
+    "message": "Something went wrong"
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": false,
+    "message": "Incomplete data in request body"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/petownersetlocation</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>user_id</code></td>
+<td>string</td>
+<td>required</td>
+</tr>
+<tr>
+<td><code>latitude</code></td>
+<td>string</td>
+<td>required</td>
+</tr>
+<tr>
+<td><code>longitude</code></td>
+<td>string</td>
+<td>required</td>
+</tr>
+</tbody>
+</table>
+<!-- END_4c93baea7f9a515b580f960514830134 -->
+<h1>PET SERVICE</h1>
 <!-- START_91a71726dd2fc6515630297ad3df8f12 -->
-<h2>Signup</h2>
+<h2>SIGN UP</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -401,7 +484,7 @@ fetch(url, {
 </table>
 <!-- END_91a71726dd2fc6515630297ad3df8f12 -->
 <!-- START_910731cff1ffe0036ded5ce0d443f5c1 -->
-<h2>Signin</h2>
+<h2>SIGN IN</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -488,6 +571,91 @@ fetch(url, {
 </tbody>
 </table>
 <!-- END_910731cff1ffe0036ded5ce0d443f5c1 -->
+<!-- START_08f23099485dd96a1f163cfbe56e8269 -->
+<h2>SET USER LOCATION</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-javascript">const url = new URL(
+    "https://test.petsheba.com/api/petservicesetlocation"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "user_id": "Shajedul",
+    "latitude": "23.12345",
+    "longitude": "73.12345"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<pre><code class="language-bash">curl -X POST \
+    "https://test.petsheba.com/api/petservicesetlocation" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"user_id":"Shajedul","latitude":"23.12345","longitude":"73.12345"}'
+</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": true,
+    "message": "Location saved"
+}</code></pre>
+<blockquote>
+<p>Example response (500):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": false,
+    "message": "Something went wrong"
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": false,
+    "message": "Incomplete data in request body"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/petservicesetlocation</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>user_id</code></td>
+<td>string</td>
+<td>required</td>
+</tr>
+<tr>
+<td><code>latitude</code></td>
+<td>string</td>
+<td>required</td>
+</tr>
+<tr>
+<td><code>longitude</code></td>
+<td>string</td>
+<td>required</td>
+</tr>
+</tbody>
+</table>
+<!-- END_08f23099485dd96a1f163cfbe56e8269 -->
       </div>
       <div class="dark-box">
                         <div class="lang-selector">

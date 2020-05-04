@@ -7,14 +7,12 @@ use Illuminate\Http\Request;
 
 
 /**
- * @group Pet Owner User
- * 
- * APIs for pet owner user signup and signin
+ * @group PET OWNER
  */
 class PetOwnerUserController extends Controller
 {
-     /**
-     * Signup
+    /**
+     * SIGN UP
      * 
      * 
      * @bodyParam first_name string required Example: Shajedul
@@ -55,48 +53,39 @@ class PetOwnerUserController extends Controller
     public function signup(Request $request)
     {
 
-        if($request->input('email') != null && $request->input('mobile_number') !=null && $request->input('password') !=null && $request->input('first_name') !=null && $request->input('last_name') !=null )
-        {
+        if ($request->input('email') != null && $request->input('mobile_number') != null && $request->input('password') != null && $request->input('first_name') != null && $request->input('last_name') != null) {
             $petOwnerUser = PetOwnerUser::all();
 
             $userCount = count($petOwnerUser);
-    
+
             $user_exist = false;
-    
-            foreach($petOwnerUser as $data)
-            {
-    
-                if($data->email == $request->input('email') || $data->mobile_number == $request->input('mobile_number'))
-                {
+
+            foreach ($petOwnerUser as $data) {
+
+                if ($data->email == $request->input('email') || $data->mobile_number == $request->input('mobile_number')) {
                     $user_exist = true;
                     break;
                 }
             }
 
-            if($user_exist == true)
-            {
+            if ($user_exist == true) {
                 return response()->json([
                     "success" => false,
                     "message" => "User exist"
-                ],200);
-            }
-            else
-            {
+                ], 200);
+            } else {
                 $petOwnerUser = new PetOwnerUser();
-               
-    
+
+
                 $user_id_generated = null;
-    
-                if($userCount==0)
-                {
-                    $user_id_generated = date("Y")."1";
-                }
-                else
-                {
+
+                if ($userCount == 0) {
+                    $user_id_generated = date("Y") . "1";
+                } else {
                     $last_row = PetOwnerUser::latest()->first();
-                    $user_id_generated = $last_row->user_id+1;
+                    $user_id_generated = $last_row->user_id + 1;
                 }
-                
+
                 $petOwnerUser->user_id = $user_id_generated;
                 $petOwnerUser->email = $request->input('email');
                 $petOwnerUser->mobile_number = $request->input('mobile_number');
@@ -106,36 +95,30 @@ class PetOwnerUserController extends Controller
                 $petOwnerUser->latitude = $request->input('latitude');
                 $petOwnerUser->longitude = $request->input('longitude');
                 $petOwnerUser->address = $request->input('address');
-                   
-                if($petOwnerUser->save())
-                {
-                        
+
+                if ($petOwnerUser->save()) {
+
                     return response()->json([
                         "success" => true,
                         "message" => "Account created"
-                    ],200);  
-                    
-                }
-                else
-                {
+                    ], 200);
+                } else {
                     return response()->json([
                         "success" => false,
                         "message" => "Something went wrong",
-                    ],500);
+                    ], 500);
                 }
             }
-        }
-        else
-        {
+        } else {
             return response()->json([
                 "success" => false,
                 "message" => "Incomplete data in request body"
-            ],400);
-        }    
+            ], 400);
+        }
     }
 
-     /**
-     * Signin
+    /**
+     * SIGN IN
      * 
      * 
      * @bodyParam email string it is optional only if you use mobile_number Example: info@shajedulislam.dev
@@ -165,47 +148,92 @@ class PetOwnerUserController extends Controller
     public function signin(Request $request)
     {
         $petOwnerUser = PetOwnerUser::all();
-
         $user_exist = false;
         $password_wrong = false;
         $signed_user_data = null;
 
-        foreach($petOwnerUser as $data)
-        {
-            if($data->email == $request->input('email') || $data->mobile_number == $request->input('mobile_number'))
-            {
+        foreach ($petOwnerUser as $data) {
+            if ($data->email == $request->input('email') || $data->mobile_number == $request->input('mobile_number')) {
                 $user_exist = true;
                 $signed_user_data = $data;
-                if($data->password != $request->input('password'))
-                {
+                if ($data->password != $request->input('password')) {
                     $password_wrong = true;
                     break;
-                }   
+                }
             }
         }
 
-        if($user_exist == true &&  $password_wrong == false)
-        {
+        if ($user_exist == true &&  $password_wrong == false) {
             //$access_token_generated = bin2hex(random_bytes(64));
 
             return response()->json([
                 "success" => true,
-                "user_id" => $signed_user_data->user_id               
-            ],200);
-        }
-        else if($user_exist == true &&  $password_wrong == true)
-        {
+                "user_id" => $signed_user_data->user_id
+            ], 200);
+        } else if ($user_exist == true &&  $password_wrong == true) {
             return response()->json([
                 "success" => false,
                 "message" => "Wrong password"
-            ],401);
-        }
-        else
-        {
+            ], 401);
+        } else {
             return response()->json([
                 "success" => false,
-                "message" => "User not found"               
-            ],404);
+                "message" => "User not found"
+            ], 404);
+        }
+    }
+
+
+    /**
+     * SET USER LOCATION
+     * 
+     * 
+     * @bodyParam user_id string required Example: Shajedul
+     * @bodyParam latitude string required Example: 23.12345
+     * @bodyParam longitude string required Example: 73.12345
+     *
+     *
+     * @response 200
+     * {
+     *      "success": true,
+     *      "message": "Location saved"
+     * }
+     * 
+     * @response 500
+     * {
+     *      "success": false,
+     *      "message": "Something went wrong"
+     * }
+     * 
+     * @response 400
+     * {
+     *      "success": false,
+     *      "message": "Incomplete data in request body"
+     * }
+     * 
+     */
+    public function setLocation(Request $request)
+    {
+
+        if ($request->input('user_id') != null && $request->input('latitude') != null && $request->input('longitude') != null) {
+            $row = PetOwnerUser::where('user_id', $request->input('user_id'))->update(['latitude' => $request->input('latitude'), 'longitude' => $request->input('longitude')]);
+
+            if ($row > 0) {
+                return response()->json([
+                    "success" => true,
+                    "message" => "Location saved"
+                ], 200);
+            } else {
+                return response()->json([
+                    "success" => false,
+                    "message" => "Something went wrong"
+                ], 500);
+            }
+        } else {
+            return response()->json([
+                "success" => false,
+                "message" => "Incomplete data in request body"
+            ], 400);
         }
     }
 }
