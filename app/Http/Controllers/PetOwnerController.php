@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\PetOwnerUser;
+use App\PetOwner;
 use Illuminate\Http\Request;
 
 
 /**
  * @group PET OWNER
  */
-class PetOwnerUserController extends Controller
+class PetOwnerController extends Controller
 {
     /**
      * SIGN UP
@@ -54,7 +54,7 @@ class PetOwnerUserController extends Controller
     {
 
         if ($request->input('email') != null && $request->input('mobile_number') != null && $request->input('password') != null && $request->input('first_name') != null && $request->input('last_name') != null) {
-            $petOwnerUser = PetOwnerUser::all();
+            $petOwnerUser = PetOwner::all();
 
             $userCount = count($petOwnerUser);
 
@@ -74,7 +74,7 @@ class PetOwnerUserController extends Controller
                     "message" => "User exist"
                 ], 200);
             } else {
-                $petOwnerUser = new PetOwnerUser();
+                $petOwnerUser = new PetOwner();
 
 
                 $user_id_generated = null;
@@ -82,7 +82,7 @@ class PetOwnerUserController extends Controller
                 if ($userCount == 0) {
                     $user_id_generated = date("Y") . "1";
                 } else {
-                    $last_row = PetOwnerUser::latest()->first();
+                    $last_row = PetOwner::latest()->first();
                     $user_id_generated = $last_row->user_id + 1;
                 }
 
@@ -147,7 +147,7 @@ class PetOwnerUserController extends Controller
      */
     public function signin(Request $request)
     {
-        $petOwnerUser = PetOwnerUser::all();
+        $petOwnerUser = PetOwner::all();
         $user_exist = false;
         $password_wrong = false;
         $signed_user_data = null;
@@ -216,7 +216,7 @@ class PetOwnerUserController extends Controller
     {
 
         if ($request->input('user_id') != null && $request->input('latitude') != null && $request->input('longitude') != null) {
-            $row = PetOwnerUser::where('user_id', $request->input('user_id'))->update(['latitude' => $request->input('latitude'), 'longitude' => $request->input('longitude')]);
+            $row = PetOwner::where('user_id', $request->input('user_id'))->update(['latitude' => $request->input('latitude'), 'longitude' => $request->input('longitude')]);
 
             if ($row > 0) {
                 return response()->json([

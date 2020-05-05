@@ -342,6 +342,128 @@ fetch(url, {
 </tbody>
 </table>
 <!-- END_4c93baea7f9a515b580f960514830134 -->
+<h1>PET PROFILE</h1>
+<!-- START_b945358e811a9fa0a9f6d65dfbf03ff2 -->
+<h2>CREATE PET PROFILE</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-javascript">const url = new URL(
+    "https://test.petsheba.com/api/createpetprofile"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "user_id": "12345",
+    "pet_id": "12345",
+    "type": "Cat",
+    "name": "Dobby",
+    "gender": "Male",
+    "breed": "Asian",
+    "birthday": "01-01-2020",
+    "neutered_spayed": true,
+    "notes": "Any notes can be written"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<pre><code class="language-bash">curl -X POST \
+    "https://test.petsheba.com/api/createpetprofile" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"user_id":"12345","pet_id":"12345","type":"Cat","name":"Dobby","gender":"Male","breed":"Asian","birthday":"01-01-2020","neutered_spayed":true,"notes":"Any notes can be written"}'
+</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": true,
+    "message": "Profile created"
+}</code></pre>
+<blockquote>
+<p>Example response (500):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": false,
+    "message": "Something went wrong"
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": false,
+    "message": "Incomplete data in request body"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/createpetprofile</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>user_id</code></td>
+<td>string</td>
+<td>required</td>
+</tr>
+<tr>
+<td><code>pet_id</code></td>
+<td>string</td>
+<td>required</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>string</td>
+<td>required</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>required</td>
+</tr>
+<tr>
+<td><code>gender</code></td>
+<td>string</td>
+<td>required</td>
+</tr>
+<tr>
+<td><code>breed</code></td>
+<td>string</td>
+<td>required</td>
+</tr>
+<tr>
+<td><code>birthday</code></td>
+<td>string</td>
+<td>required</td>
+</tr>
+<tr>
+<td><code>neutered_spayed</code></td>
+<td>boolean</td>
+<td>required</td>
+</tr>
+<tr>
+<td><code>notes</code></td>
+<td>string</td>
+<td>optional</td>
+</tr>
+</tbody>
+</table>
+<!-- END_b945358e811a9fa0a9f6d65dfbf03ff2 -->
 <h1>PET SERVICE</h1>
 <!-- START_91a71726dd2fc6515630297ad3df8f12 -->
 <h2>SIGN UP</h2>

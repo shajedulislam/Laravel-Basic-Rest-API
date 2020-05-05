@@ -271,6 +271,98 @@ Parameter | Type | Status | Description
     
 <!-- END_4c93baea7f9a515b580f960514830134 -->
 
+#PET PROFILE
+
+
+<!-- START_b945358e811a9fa0a9f6d65dfbf03ff2 -->
+## CREATE PET PROFILE
+
+> Example request:
+
+```javascript
+const url = new URL(
+    "https://test.petsheba.com/api/createpetprofile"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "user_id": "12345",
+    "pet_id": "12345",
+    "type": "Cat",
+    "name": "Dobby",
+    "gender": "Male",
+    "breed": "Asian",
+    "birthday": "01-01-2020",
+    "neutered_spayed": true,
+    "notes": "Any notes can be written"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+```bash
+curl -X POST \
+    "https://test.petsheba.com/api/createpetprofile" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"user_id":"12345","pet_id":"12345","type":"Cat","name":"Dobby","gender":"Male","breed":"Asian","birthday":"01-01-2020","neutered_spayed":true,"notes":"Any notes can be written"}'
+
+```
+
+
+> Example response (200):
+
+```json
+{
+    "success": true,
+    "message": "Profile created"
+}
+```
+> Example response (500):
+
+```json
+{
+    "success": false,
+    "message": "Something went wrong"
+}
+```
+> Example response (400):
+
+```json
+{
+    "success": false,
+    "message": "Incomplete data in request body"
+}
+```
+
+### HTTP Request
+`POST api/createpetprofile`
+
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `user_id` | string |  required  | 
+        `pet_id` | string |  required  | 
+        `type` | string |  required  | 
+        `name` | string |  required  | 
+        `gender` | string |  required  | 
+        `breed` | string |  required  | 
+        `birthday` | string |  required  | 
+        `neutered_spayed` | boolean |  required  | 
+        `notes` | string |  optional  | 
+    
+<!-- END_b945358e811a9fa0a9f6d65dfbf03ff2 -->
+
 #PET SERVICE
 
 

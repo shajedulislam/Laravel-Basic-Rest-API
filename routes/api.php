@@ -4,13 +4,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
-//petservice
-Route::post('/petservicesignup', 'PetServiceUserController@signup');
-Route::post('/petservicesignin', 'PetServiceUserController@signin');
-Route::post('/petservicesetlocation', 'PetServiceUserController@setLocation');
+//pet service
+Route::post('/petservicesignup', 'PetServiceController@signup');
+Route::post('/petservicesignin', 'PetServiceController@signin');
+Route::post('/petservicesetlocation', 'PetServiceController@setLocation');
 
 
-//petowner
-Route::post('/petownersignup', 'PetOwnerUserController@signup');
-Route::post('/petownersignin', 'PetOwnerUserController@signin');
-Route::post('/petownersetlocation', 'PetOwnerUserController@setLocation');
+//pet owner
+Route::post('/petownersignup', 'PetOwnerController@signup');
+Route::post('/petownersignin', 'PetOwnerController@signin');
+Route::post('/petownersetlocation', 'PetOwnerController@setLocation');
+
+
+//pet profile
+Route::post('/createpetprofile', 'PetProfileController@create');

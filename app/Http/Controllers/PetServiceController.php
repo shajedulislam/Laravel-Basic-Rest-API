@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\PetServiceUser;
+use App\PetService;
 use Illuminate\Http\Request;
 
 
 /**
  * @group PET SERVICE
  */
-class PetServiceUserController extends Controller
+class PetServiceController extends Controller
 {
     /**
      * SIGN UP
@@ -57,7 +57,7 @@ class PetServiceUserController extends Controller
     {
 
         if ($request->input('email') != null && $request->input('mobile_number') != null && $request->input('password') != null && $request->input('registration_number') != null && $request->input('nid_number') != null && $request->input('first_name') != null && $request->input('last_name') != null) {
-            $petServiceUser = PetServiceUser::all();
+            $petServiceUser = PetService::all();
 
             $userCount = count($petServiceUser);
 
@@ -77,7 +77,7 @@ class PetServiceUserController extends Controller
                     "message" => "User exist"
                 ], 200);
             } else {
-                $petServiceUser = new PetServiceUser();
+                $petServiceUser = new PetService();
 
 
                 $user_id_generated = null;
@@ -85,7 +85,7 @@ class PetServiceUserController extends Controller
                 if ($userCount == 0) {
                     $user_id_generated = date("Y") . "1";
                 } else {
-                    $last_row = PetServiceUser::latest()->first();
+                    $last_row = PetService::latest()->first();
                     $user_id_generated = $last_row->user_id + 1;
                 }
 
@@ -154,7 +154,7 @@ class PetServiceUserController extends Controller
      */
     public function signin(Request $request)
     {
-        $petServiceUser = PetServiceUser::all();
+        $petServiceUser = PetService::all();
 
         $user_exist = false;
         $password_wrong = false;
@@ -223,9 +223,8 @@ class PetServiceUserController extends Controller
      */
     public function setLocation(Request $request)
     {
-
         if ($request->input('user_id') != null && $request->input('latitude') != null && $request->input('longitude') != null) {
-            $row = PetServiceUser::where('user_id', $request->input('user_id'))->update(['latitude' => $request->input('latitude'), 'longitude' => $request->input('longitude')]);
+            $row = PetService::where('user_id', $request->input('user_id'))->update(['latitude' => $request->input('latitude'), 'longitude' => $request->input('longitude')]);
 
             if ($row > 0) {
                 return response()->json([
