@@ -47,7 +47,7 @@ class PetProfileController extends Controller
     public function create(Request $request)
     {
 
-        if ($request->input('user_id') != null && $request->input('pet_id') != null && $request->input('name') != null && $request->input('gender') != null) {
+        if ($request->input('user_id') != null && $request->input('type') != null && $request->input('name') != null && $request->input('gender') != null) {
             $pets = PetProfile::all();
 
             $userCount = count($pets);
@@ -68,11 +68,11 @@ class PetProfileController extends Controller
             $petProfile->type = $request->input('type');
             $petProfile->name = $request->input('name');
             $petProfile->gender = $request->input('gender');
-            $petProfile->password = $request->input('breed');
-            $petProfile->first_name = $request->input('birthday');
-            $petProfile->last_name = $request->input('neutered_spayed');
-            $petProfile->registration_number = $request->input('color');
-            $petProfile->nid_number = $request->input('notes');
+            $petProfile->breed = $request->input('breed');
+            $petProfile->birthday = $request->input('birthday');
+            $petProfile->neutered_spayed = $request->input('neutered_spayed');
+            $petProfile->color = $request->input('color');
+            $petProfile->notes = $request->input('notes');
 
             if ($petProfile->save()) {
 
